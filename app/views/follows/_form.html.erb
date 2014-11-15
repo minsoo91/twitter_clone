@@ -1,0 +1,13 @@
+<% if current_user.follows?(user) %>
+  <% follow = "followed" %>
+<% else %>
+  <% follow = "unfollow" %>
+<% end %>
+
+<%= button_to "", user_follow_url(user), data: {:'user-id' => user.id, :'initial-follow-state' => follow }, class: :'follow-toggle'%>
+
+<script>
+    $(function() {
+          $('.follow-toggle').followToggle();
+    })
+</script>
